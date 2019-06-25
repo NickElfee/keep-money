@@ -1,0 +1,61 @@
+.middle-content
+  display: flex
+  justify-content: space-between
+
+.sing-up
+  display: flex
+  align-items: center
+
+.form-signup
+  margin-right: 140px
+
+.middle-content
+  position: relative
+
+video
+  z-index: 0
+
+.btn-sound
+  position: absolute
+  bottom: 0
+  z-index: 1
+  right: -5%
+  height: 40px
+  width: 40px
+
+.overlay
+  position: absolute
+  bottom: 1%
+  left: 60.5%
+  z-index: 1
+
+.overlay:focus,.overlay:active
+  outline: none !important
+  box-shadow: none
+
+.menu-animation
+  position: relative
+  -webkit-animation-name: example
+  animation-name: example
+  animation-duration: 4s
+  animation-iteration-count: 2
+  animation-direction: alternate
+
+@-webkit-keyframes example
+0%
+  left: 0
+  top: 0
+25%
+  left: 200px
+  top: 0
+50%
+  left: 300px
+  top: 0
+75%
+  left: 400px
+  top: 0
+100%
+  left: 500px
+  top: 0
+
+
