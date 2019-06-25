@@ -1,0 +1,33 @@
+<form
+    [formGroup]="signInForm"
+    (ngSubmit)="signIn()"
+    class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <label for="inputLogin">Login</label>
+  <input
+    tooltip="Type your login, this input is required"
+    placement="left"
+    formControlName="userLogin"
+    type="string"
+    id="inputLogin"
+    class="form-control mb-2"
+  />
+  <label for="inputUserPassword">Password</label>
+  <input
+    tooltip="Type your password, this input is required"
+    placement="left"
+    formControlName="userPassword"
+    type="password"
+    id="inputUserPassword"
+    class="form-control mb-2"
+  />
+  <div class="checkbox mb-3">
+    <label> <input type="checkbox" value="remember-me" tooltip="You can remember your information"
+                   placement="left"/>
+      Remember me
+    </label>
+  </div>
+  <button (click)="onClickSignInSubmit()" class="btn btn-lg btn-primary btn-block mt-3" type="submit" [disabled]="signInForm.invalid">
+    Sign in
+  </button>
+</form>
