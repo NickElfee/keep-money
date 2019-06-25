@@ -7,7 +7,9 @@
   align-items: center
 
 .form-signup
-  margin-right: 140px
+  position: absolute
+  right: 10%
+  bottom: 25%
 
 .middle-content
   position: relative
@@ -33,29 +35,118 @@ video
   outline: none !important
   box-shadow: none
 
-.menu-animation
-  position: relative
-  -webkit-animation-name: example
-  animation-name: example
-  animation-duration: 4s
-  animation-iteration-count: 2
-  animation-direction: alternate
 
-@-webkit-keyframes example
-0%
-  left: 0
-  top: 0
-25%
-  left: 200px
-  top: 0
-50%
-  left: 300px
-  top: 0
-75%
-  left: 400px
-  top: 0
-100%
-  left: 500px
-  top: 0
+.title-information
+  display: flex
+  text-align: center
+  justify-content: center
+  p
+    line-height: 1.7rem
+
+.menu-social
+  display: flex
+  justify-content: center
+  flex-direction: column
+
+.menu-social-action
+  display: flex
+  justify-content: center
+
+
+.menu-animation
+  animation-name: slideRight
+  -webkit-animation-name: slideRight
+
+  animation-duration: 3s
+  -webkit-animation-duration: 3s
+
+  animation-timing-function: ease-in-out
+  -webkit-animation-timing-function: ease-in-out
+
+  visibility: visible !important
+  @keyframes slideRight
+    0%
+      transform: translateX(-150%)
+    50%
+      transform: translateX(8%)
+    65%
+      transform: translateX(-4%)
+
+    80%
+      transform: translateX(4%)
+
+    95%
+      transform: translateX(-2%)
+
+    100%
+      transform: translateX(0%)
+
+  @-webkit-keyframes slideRight
+    0%
+     -webkit-transform: translateX(-150%)
+
+    50%
+     -webkit-transform: translateX(8%)
+
+    65%
+     -webkit-transform: translateX(-4%)
+
+    80%
+     -webkit-transform: translateX(4%)
+
+    95%
+     -webkit-transform: translateX(-2%)
+
+    100%
+     -webkit-transform: translateX(0%)
+
+.menu-social-action
+  animation-name: slideDown
+  -webkit-animation-name: slideDown
+  animation-duration: 1s
+  -webkit-animation-duration: 1s
+
+  animation-timing-function: ease-in-out
+  -webkit-animation-timing-function: ease-in-out
+
+  visibility: visible !important
+
+  @keyframes slideDown
+    0%
+      transform: translateY(-100%)
+
+    50%
+      transform: translateY(8%)
+
+    65%
+      transform: translateY(-4%)
+
+    80%
+      transform: translateY(4%)
+
+    95%
+      transform: translateY(-2%)
+
+    100%
+      transform: translateY(0%)
+
+  @-webkit-keyframes slideDown
+    0%
+      -webkit-transform: translateY(-100%)
+
+    50%
+      -webkit-transform: translateY(8%)
+
+    65%
+      -webkit-transform: translateY(-4%)
+
+    80%
+      -webkit-transform: translateY(4%)
+
+    95%
+      -webkit-transform: translateY(-2%)
+
+    100%
+      -webkit-transform: translateY(0%)
 
 
