@@ -1,0 +1,175 @@
+<div class="login">
+  <nav class="navbar navbar-light bg-dark">
+    <div class="logo">
+      <a href="#">
+        <img src="../../../../assets/image/logo.png" alt="Logo">
+      </a>
+    </div>
+    <img src="../../../../assets/image/tagline.png" alt="Tagline">
+    <div class="sign">
+      <button (click)="signUp()" type="button" class="btn btn-dark m-1">sing in</button>
+      <button (click)="signIn()" type="button" class="btn btn-dark m-1 active">sing up</button>
+    </div>
+  </nav>
+</div>
+<div class="middle-content bg-light">
+  <div id="video-bg">
+    <video height="540px" preload="auto" autoplay="autoplay" #videoSound>
+      <source src="../../../../assets/video/movie_mot.mp4" type="video/mp4">
+    </video>
+    <button (click)="mute(videoSound)"
+            class="btn btn-dark btn-sound overlay"
+            tooltip="You can turn off the sound, but in fact this is important information for each"
+    >
+      <i *ngIf="soundOn" class="fa fa-volume-up" ></i>
+      <i *ngIf="!soundOn" class="fa fa-volume-off" ></i>
+    </button>
+  </div>
+  <div class="sing-up">
+    <form *ngIf="isSignUp"
+      [formGroup]="signUpForm"
+      (ngSubmit)="signUp()"
+      class="form-signup">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+      <label for="inputUserName">First Name</label>
+      <input
+        formControlName="userName"
+        type="string"
+        id="inputUserName"
+        class="form-control mb-2"
+        autofocus=""
+      />
+      <label for="inputPassword">Password</label>
+      <input
+        formControlName="userPassword"
+        type="password"
+        id="inputPassword"
+        class="form-control mb-2"
+      />
+      <label for="inputEmail">Email address</label>
+      <input
+        formControlName="userEmail"
+        type="email"
+        id="inputEmail"
+        class="form-control mb-2"
+      />
+      <button (click)="onClickSignUpSubmit()" class="btn btn-lg btn-primary btn-block mt-3" type="submit" [disabled]="signUpForm.invalid">
+        Sign up
+      </button>
+    </form>
+    <app-sign-up *ngIf="!isSignUp"></app-sign-up>
+  </div>
+</div>
+<footer class="page-footer font-small indigo">
+  <!-- Footer Links -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="#!">About us</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="#!">Products</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="#!">Awards</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="#!">Help</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="#!">Contact</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+    <hr class="rgba-white-light" style="margin: 0 15%;">
+
+    <!-- Grid row-->
+    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+      <!-- Grid column -->
+      <div class="col-md-8 col-12 mt-5">
+        <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+          explicabo.
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+
+    <!-- Grid row-->
+    <div class="container">
+
+      <!-- Grid column -->
+      <div class="row d-flex justify-content-center">
+
+        <div class="mb-4">
+
+          <!-- Facebook -->
+          <a class="fb-ic" href="https://www.facebook.com/MysatovNick">
+            <i class="fa fa-facebook fa-lg m-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic" href="https://www.linkedin.com/in/%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9-%D0%BC%D1%83%D1%81%D0%B0%D1%82%D0%BE%D0%B2-4ba498175/">
+            <i class="fa fa-linkedin fa-lg m-4"> </i>
+          </a>
+          <!--Github-->
+          <a class="github" href="https://github.com/NickElfee">
+            <i class="fa fa-github fa-lg m-4"></i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic" href="https://www.instagram.com/mysatov_nicholas/?hl=ru">
+            <i class="fa fa-instagram fa-lg m-4"> </i>
+          </a>
+          <!--Telegram-->
+          <a class="ins-ic" href="https://web.telegram.org/#/im">
+            <i class="fa fa-telegram fa-lg m-4"> </i>
+          </a>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <b>Musatov Nick</b>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
