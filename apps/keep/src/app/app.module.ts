@@ -1,16 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {routing} from "./app.routing";
+import {ReactiveFormsModule} from "@angular/forms";
+import {TooltipModule} from "ngx-bootstrap";
+import {LoginComponent} from "./components/page/login/login.component";
+import {SignUpComponent} from "./components/smart/sign-up/sign-up.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    routing,
+    ReactiveFormsModule,
+    TooltipModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
