@@ -7,6 +7,12 @@ import { TooltipModule } from 'ngx-bootstrap';
 import { LoginComponent } from './components/page/login/login.component';
 import { SignUpComponent } from './components/smart/sign-up/sign-up.component';
 import { SignInComponent } from './components/smart/sign-in/sign-in.component';
+import { NxModule } from '@nrwl/nx';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './+state/global.reducers';
+import { environment } from '../environments/environment';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -20,8 +26,16 @@ import { SignInComponent } from './components/smart/sign-in/sign-in.component';
     routing,
     ReactiveFormsModule,
     TooltipModule.forRoot(),
+    NxModule.forRoot(),
+    StoreModule.forRoot(
+      reducers,
+      {
+        metaReducers: !environment.production ? [storeFreeze] : [],
+      },
+    ),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
