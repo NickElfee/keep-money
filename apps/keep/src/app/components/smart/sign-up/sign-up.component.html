@@ -2,8 +2,8 @@
   <h1 class="h3 m-1 font-weight-normal text-center">All fields are required</h1>
   <form
     [formGroup]="signUpFormFull"
-    (ngSubmit)="signUpFull()"
-    class="form-signup">
+    class="form-signup"
+  #signUpForm>
     <label for="inputFirstName" class="sr-only">First Name</label>
     <input
       placeholder="First Name"
@@ -115,31 +115,31 @@
       tooltip="Type how much money does your family have for a month, this input is required"
       placement="left"
     />
-    <label for="inputEat" class="sr-only">Eat</label>
+    <label for="inputFood" class="sr-only">Food</label>
     <input
-      placeholder="Eat"
-      formControlName="eat"
-      type="string"
-      id="inputEat"
+      placeholder="Food"
+      formControlName="food"
+      type="number"
+      id="inputFood"
       class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type what food do you prefer, this input is required"
+      tooltip="Type how much money do you spend to food, this input is required"
       placement="left"
     />
-    <label for="inputNoEat" class="sr-only">No eat</label>
+    <label for="inputRent" class="sr-only">Rent</label>
     <input
-      placeholder="No eat"
-      formControlName="noEat"
-      type="string"
-      id="inputNoEat"
+      placeholder="Rent"
+      formControlName="rent"
+      type="number"
+      id="inputRent"
       class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type what food don't you eat, this input is required"
+      tooltip="Type how much money do you pay for an apartment, this input is required"
       placement="left"
     />
     <label for="inputClothes" class="sr-only">Clothes</label>
     <input
       placeholder="Clothes"
       formControlName="clothes"
-      type="string"
+      type="number"
       id="inputClothes"
       class="form-control m-2 col-md-offset-2 col-md-5"
       tooltip="Type how much money do you spend on clothes per a month, this input is required"
@@ -149,7 +149,7 @@
     <input
       placeholder="House hole chemicals"
       formControlName="houseHoldChemicals"
-      type="string"
+      type="number"
       id="inputHouseHoldChemicals"
       class="form-control m-2 col-md-offset-2 col-md-5"
       tooltip="Type how much money do you spend on chemicals per a month, this input is required"
@@ -159,13 +159,13 @@
     <input
       placeholder="Animals"
       formControlName="animals"
-      type="string"
+      type="number"
       id="inputAnimals"
       class="form-control m-2 col-md-offset-2 col-md-5"
       tooltip="Type do you have some animals or an animal, this input is required"
       placement="left"
     />
-    <button (click)="onClickSignUpSubmit()" class="btn btn-lg btn-primary justify-content-center mt-2" type="submit" [disabled]="signUpFormFull.invalid">
+    <button (click)="signUpFull(signUpForm.value)" class="btn btn-lg btn-primary justify-content-center mt-2" type="submit" [disabled]="signUpFormFull.invalid">
       Sign up
     </button>
   </form>

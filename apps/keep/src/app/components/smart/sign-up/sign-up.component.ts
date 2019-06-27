@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {UserDto} from '../../../../../../../libs/data/src';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,8 +8,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./sign-up.component.sass']
 })
 export class SignUpComponent implements OnInit {
+  @Output() clickSingFormFull = new EventEmitter<UserDto>();
+    signUpFull(singUp: UserDto): void {
+      singUp = this.signUpFormFull.value;
+      this.clickSingFormFull.emit(singUp);
+    }
+
   public signUpFormFull: FormGroup;
+
   constructor(private builder: FormBuilder) { }
+
 
   ngOnInit() {
     this.signUpFormFull = this.builder.group({
@@ -45,10 +54,10 @@ export class SignUpComponent implements OnInit {
       publishBudget: new FormControl('', [
         Validators.required
       ]),
-      eat: new FormControl('', [
+      food: new FormControl('', [
         Validators.required
       ]),
-      noEat: new FormControl('', [
+      rent: new FormControl('', [
         Validators.required
       ]),
       clothes: new FormControl('', [
@@ -64,10 +73,6 @@ export class SignUpComponent implements OnInit {
   }
 
   public onClickSignUpSubmit(): void {
-
-  }
-
-  public signUpFull(): void {
 
   }
 

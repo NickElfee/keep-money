@@ -1,7 +1,9 @@
 import { Identifiable } from '../base/identifiable.dto';
 
 export class UserDto extends Identifiable {
-  name: string;
+  firstName: string;
+  lastName: string;
+  login: string;
   password: string;
   email: string;
   age: number;
@@ -13,8 +15,8 @@ export class UserDto extends Identifiable {
   earns: number;
   budget: number;
   publishBudget: number;
-  eat: string[];
-  noEat: string[];
+  eat: number;
+  rent: number;
   clothes: number;
   householdChemicals: number;
   animals: number;

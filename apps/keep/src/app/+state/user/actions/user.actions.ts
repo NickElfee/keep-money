@@ -3,15 +3,15 @@ import { UserDto } from '../../../../../../../libs/data/src';
 
 
 export enum UserActionTypes {
-  ADD_USER      = '[User] Add User',
-  REMOVE_USER   = '[User] Remove  User',
-  UPDATE_USER   = '[User] Update User',
+  ADD_USER_LIST      = '[User] Add User list',
+  REMOVE_USER        = '[User] Remove  User',
+  UPDATE_USER        = '[User] Update User',
 }
 
-export class AddUser implements Action {
-  readonly type = UserActionTypes.ADD_USER;
+export class AddUserList implements Action {
+  readonly type = UserActionTypes.ADD_USER_LIST;
 
-  constructor(public payload: UserDto) {}
+  constructor(public payload: UserDto[]) {}
 }
 
 export class RemoveUser implements Action {
@@ -27,6 +27,6 @@ export class UpdateUser implements Action {
 }
 
 export type UserActions =
-  | AddUser
+  | AddUserList
   | RemoveUser
   | UpdateUser;
