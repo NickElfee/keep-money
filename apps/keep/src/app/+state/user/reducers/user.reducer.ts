@@ -2,7 +2,7 @@ import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { ActionReducer } from '@ngrx/store';
 import { UserDto } from '../../../../../../../libs/data/src';
 import {
-  AddUser,
+  AddUserList,
   RemoveUser,
   UpdateUser,
   UserActions, UserActionTypes
@@ -19,13 +19,13 @@ export interface UserState extends EntityState<UserDto> {}
 export const userInitialState: UserState = userAdapter.getInitialState({});
 
 const reducers: Record<UserActionTypes, ActionReducer<UserState>> = {
-  [UserActionTypes.ADD_USER]: addUser,
+  [UserActionTypes.ADD_USER_LIST]: addUserList,
   [UserActionTypes.UPDATE_USER]: updateUser,
   [UserActionTypes.REMOVE_USER]: removeUser,
 };
 
-export function addUser(state: UserState,  { payload }: AddUser): UserState {
-  return userAdapter.addOne(payload, state);
+export function addUserList(state: UserState,  { payload }: AddUserList): UserState {
+  return userAdapter.addMany(payload, state);
 }
 
 export function updateUser(state: UserState, { payload }: UpdateUser): UserState {

@@ -13,6 +13,7 @@ import { reducers } from './+state/global.reducers';
 import { environment } from '../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   imports: [
     BrowserModule,
     routing,
+    HttpClientModule,
     ReactiveFormsModule,
     TooltipModule.forRoot(),
     NxModule.forRoot(),

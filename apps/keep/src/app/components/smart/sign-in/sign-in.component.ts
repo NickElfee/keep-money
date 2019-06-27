@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {UserDto} from '../../../../../../../libs/data/src';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,7 +10,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignInComponent implements OnInit {
   public signInForm: FormGroup;
-  constructor(private builder: FormBuilder) { }
+  constructor(
+    private builder: FormBuilder,
+    private userService: UserService,
+  ) { }
 
   ngOnInit() {
     this.signInForm = this.builder.group({
@@ -27,6 +32,12 @@ export class SignInComponent implements OnInit {
 
   public onClickSignInSubmit(): void {
 
+  }
+
+  public onClickGetUser(): void {
+    const userLogin = this.signInForm.value.userLogin;
+    const userPassword = this.signInForm.value.userPassword;
+    this.userService.getUser(userLogin, userPassword).subscribe(value => console.log(value));
   }
 
 }

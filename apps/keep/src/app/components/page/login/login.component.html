@@ -2,13 +2,13 @@
   <nav class="navbar navbar-light bg-dark">
     <div class="logo">
       <a href="#">
-        <img src="../../../../assets/image/logo.png" alt="Logo">
+        <img src="../../../../assets/image/logotip.png" alt="Logo">
       </a>
     </div>
 <!--    <img src="../../../../assets/image/tagline.png" alt="Tagline">-->
     <div class="sign">
-      <button (click)="signIn()" type="button" class="btn btn-dark m-1">sing in</button>
-      <button (click)="signUp()" type="button" class="btn btn-dark m-1 active">sing up</button>
+      <button (click)="signIn()" type="button" class="btn btn-primary m-1">sing in</button>
+      <button (click)="signUp()" type="button" class="btn btn-primary m-1 active">sing up</button>
     </div>
   </nav>
 </div>
@@ -31,29 +31,33 @@
       (ngSubmit)="signUp()"
       class="form-signup">
       <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
-      <label for="inputUserLogin">Login</label>
+      <label for="inputLogin" class="sr-only">Login</label>
       <input
         tooltip="Type your login, this input is required for registration"
         placement="left"
-        formControlName="userLogin"
+        placeholder="Login"
+        formControlName="login"
         type="string"
-        id="inputUserLogin"
+        id="inputLogin"
         class="form-control mb-2"
+        autofocus=""
       />
-      <label for="inputPassword">Password</label>
+      <label for="inputPassword" class="sr-only">Password</label>
       <input
         tooltip="Type your password, this input is required for registration"
         placement="left"
-        formControlName="userPassword"
+        placeholder="Password"
+        formControlName="password"
         type="password"
         id="inputPassword"
         class="form-control mb-2"
       />
-      <label for="inputEmail">Email address</label>
+      <label for="inputEmail" class="sr-only">Email address</label>
       <input
         tooltip="Type your email, this input is required for registration"
         placement="left"
-        formControlName="userEmail"
+        placeholder="Email address"
+        formControlName="email"
         type="email"
         id="inputEmail"
         class="form-control mb-2"
@@ -62,7 +66,7 @@
         Sign up
       </button>
     </form>
-    <app-sign-up *ngIf="isSignUpFull"></app-sign-up>
+    <app-sign-up *ngIf="isSignUpFull" (clickSingFormFull)="onClickSingFormFull($event)"></app-sign-up>
     <app-sign-in *ngIf="isSignIn"></app-sign-in>
   </div>
 </div>
