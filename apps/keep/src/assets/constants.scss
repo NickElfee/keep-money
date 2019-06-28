@@ -1,0 +1,24 @@
+@base-color: rgb(21, 27, 39)
+@danger: #754250
+@danger: #754250
+
+@border-base-color: @base-color
+
+@navigation-bg-color: @base-color - #020202
+@header-bg-color: @base-color - #060606
+
+@card-bg-color: @base-color + #101010
+@card-brdr-color: @card-bg-color
+@card-bg-color-l1: @card-bg-color + #111
+@card-bg-color-l1_hover: @card-bg-color-l1 + #060606
+
+@input-bg-color: @base-color + #222
+@input-bg-color_focus: @input-bg-color + #030303
+
+
+@base-primary-color: #4275ac
+@base-primary-color_hover: @base-primary-color - #111
+
+
+@header-height: 74px
+@navigation-bar-width: 50px

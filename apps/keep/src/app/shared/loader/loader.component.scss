@@ -1,0 +1,41 @@
+:host {
+  position: relative;
+  display: flex;
+}
+
+.content-item {
+  width: 100%;
+}
+
+.overlay {
+  opacity: .3;
+}
+
+.loader-container {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.loader {
+  margin: auto;
+  border: 5px solid @base-color;
+  border-radius: 50%;
+  border-top: 5px solid @base-primary-color;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 0.5s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }

@@ -1,0 +1,6 @@
+<div class="content-item" [ngClass]="{'overlay': isActive && overlay}">
+  <ng-content></ng-content>
+</div>
+<div *ngIf="isActive" class="loader-container">
+  <div class="loader"></div>
+</div>
