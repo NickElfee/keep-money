@@ -5,6 +5,13 @@ const objectId = require("mongodb").ObjectID;
 const app = express();
 const jsonParser = express.json();
 
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:4200' || 'http://localhost:4200/login',
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
 const mongoClient = new MongoClient("mongodb://localhost:27017/", { useNewUrlParser: true });
 
 let dbClient;
@@ -20,7 +27,7 @@ mongoClient.connect(function(err, client){
   });
 });
 
-app.get("/keep-money", function(req, res){
+app.get("/keep-money/user", function(req, res){
 
   const collection = req.app.locals.collection;
   collection.find({}).toArray(function(err, users){
@@ -30,24 +37,47 @@ app.get("/keep-money", function(req, res){
   });
 
 });
-app.get("/api/users/:id", function(req, res){
 
-  const id = new objectId(req.params.id);
+app.get("/keep-money/:userPassword/login/:userLogin", function(req, res){
   const collection = req.app.locals.collection;
-  collection.findOne({_id: id}, function(err, user){
+  const userLogin = req.params.userLogin;
+  const userPassword = req.params.userPassword;
 
+  collection.find({ login: userLogin, password: userPassword }).toArray(function(err, user){
     if(err) return console.log(err);
-    res.send(user);
-  });
+    res.send(user)
+  })
 });
 
 app.post("/login", jsonParser, function (req, res) {
 
   if(!req.body) return res.sendStatus(400);
 
-  const userName = req.body.name;
+  const userLogin = req.body.login;
+  const userPassword = req.body.password;
+  const userEmail = req.body.email;
+  const userName = req.body.firstName;
+  const userLastName = req.body.lastName;
   const userAge = req.body.age;
-  const user = {name: userName, age: userAge};
+  const userGender = req.body.gender;
+  const userCountry = req.body.country;
+  const userCity = req.body.city;
+  const userCurrency = req.body.currency;
+  const userPersonOfFamily = req.body.personOfFamily;
+  const userEarns = req.body.earns;
+  const userBudget = req.body.budget;
+  const userPublishBudget = req.body.publishBudget;
+  const userEat = req.body.eat;
+  const userNoEat = req.body.noEat;
+  const userClothes = req.body.clothes;
+  const userHouseHoldChemicals = req.body.houseHoldChemicals;
+  const userAnimals = req.body.animals;
+
+  const user = {login: userLogin, password: userPassword, email: userEmail, firstName: userName, lastName: userLastName,
+    age: userAge, gender: userGender, country: userCountry, city: userCity, currency: userCurrency, personOfFamily: userPersonOfFamily,
+    earns: userEarns, budget: userBudget, publishBudget: userPublishBudget, eat: userEat, noEat: userNoEat, clothes: userClothes,
+    houseHoldChemicals: userHouseHoldChemicals, animals: userAnimals
+  };
 
   const collection = req.app.locals.collection;
   collection.insertOne(user, function(err, result){

@@ -1,16 +1,21 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
+import { UserDto } from '../../../../../../../libs/data/src';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('menuSocial') menuSocialElementRef: ElementRef;
 
   constructor(
     private builder: FormBuilder,
+    private userService: UserService,
   ) {}
 
   public menuSocialAction = false;
@@ -20,10 +25,11 @@ export class LoginComponent implements OnInit {
   public isSignUpFull = false;
   public isSignIn = false;
 
+  private onDestroy$ = new Subject<boolean>();
+
   @HostListener('window:scroll', ['$event'])
   onScrollSocialMenu($event) {
     if ($event.path[0].defaultView.innerHeight > 721) {
-      console.log($event);
       this.menuSocialAction = true;
     }
   }
@@ -32,16 +38,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signUpForm = this.builder.group({
-      userLogin: new FormControl('', [
+      login: new FormControl('', [
         Validators.required
       ]),
-      userPassword: new FormControl('', [
+      password: new FormControl('', [
         Validators.required
       ]),
-      userEmail: new FormControl('', [
+      email: new FormControl('', [
         Validators.required
       ]),
     });
+
+    this.userService.getUserList().subscribe(value => console.log(value));
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next(true);
+    this.onDestroy$.complete();
   }
 
   public signUp(): void {
@@ -72,6 +85,15 @@ export class LoginComponent implements OnInit {
 
   private scrollEvent(): any {
 
+  }
+
+  public onClickSingFormFull(userForm: UserDto): void {
+    const userData = {...this.signUpForm.value, ...userForm};
+    this.userService.setUser(userData)
+      .pipe(
+        takeUntil(this.onDestroy$),
+      )
+      .subscribe();
   }
 
 }
