@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "nodemon server.js"
+    "start-dev": "nodemon server.js"
   },
   "private": true,
   "dependencies": {
@@ -69,7 +69,7 @@
     "jest": "24.1.0",
     "jest-preset-angular": "7.0.0",
     "ngrx-store-freeze": "0.2.4",
-    "prettier": "1.15.2",
+    "prettier": "^1.15.2",
     "rxjs-tslint-rules": "^4.4.4",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
