@@ -6,8 +6,8 @@ import { UserDto } from '../../../../../libs/data/src';
 import { HttpClient } from '@angular/common/http';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { AddUserList } from '../+state/user/actions/user.actions';
-import {getUser, getUserList} from '../+state/user/selectors/user.selectors';
-import {BackUrl} from '../configs/backend-url.enum';
+import { getUser, getUserList } from '../+state/user/selectors/user.selectors';
+import { BackUrl } from '../configs/backend-url.enum';
 
 @Injectable({
   providedIn: 'root'
