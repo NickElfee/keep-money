@@ -10,7 +10,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from '../../../services/user.service';
 import { UserDto } from '../../../../../../../libs/data/src';
 import {BehaviorSubject} from 'rxjs';
-import {filter, tap} from 'rxjs/operators';
+import {filter, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
     private builder: FormBuilder,
     private userService: UserService,
     private changeDetector: ChangeDetectorRef,
-  ) {
-    this.changeDetector.reattach();
-  }
+  ) { }
 
   public menuSocialAction = false;
   public soundOn = true;
@@ -72,7 +70,6 @@ export class LoginComponent implements OnInit {
     this.isSignIn = true;
     this.isSignUp = false;
     this.isSignUpFull = false;
-    this.changeDetector.markForCheck();
   }
 
   public submit(): void {
@@ -84,19 +81,14 @@ export class LoginComponent implements OnInit {
     const userLogin = userData.login;
     this.isSignUp = !this.isSignUp;
     this.isSignUpFull = !this.isSignUpFull;
-    this.userService.identifyUser(userEmail, userLogin).pipe(
-      tap(() => this.isLoadedIdentify.next(true)),
-      filter((userDto: UserDto[]) => !userDto.length),
-      tap(() => this.isLoadedIdentify.next(false)),
-    )
-      .subscribe(value => {
+    this.userService.identifyUser(userEmail, userLogin).subscribe(value => {
+      console.log(value);
       if (!value.length) {
-        console.log('old user');
-      } else {
         console.log('new User');
+      } else {
+        console.log('old User');
       }
     });
-    this.isLoadedIdentify.next(false);
   }
 
   public mute(elem): void {

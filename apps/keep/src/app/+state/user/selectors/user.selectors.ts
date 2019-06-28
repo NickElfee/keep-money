@@ -14,5 +14,5 @@ export const getUser = (login: string, password: string) =>
 
 export const getUserIdentifyForm = (email: string, login: string) =>
   createSelector(getUserList, (userList: UserDto[]) => userList.filter((user: UserDto) =>
-    ((user.email === email) || (user.login === login)) ? false : user
+    ((user.email === email) || (user.login === login)) ? user : false
   ));
