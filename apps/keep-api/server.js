@@ -49,6 +49,18 @@ app.get("/keep-money/:userPassword/login/:userLogin", function(req, res){
   })
 });
 
+app.get("/keep-money/identify/:login/:email", function(req, res){
+  const collection = req.app.locals.collection;
+  const userLogin = req.params.userLogin;
+  const userEmail = req.params.email;
+
+  collection.find({ login: userLogin, email: userEmail }).toArray(function(err, user) {
+    console.log(user);
+    if(err) return console.log(err);
+    res.send(user)
+  })
+});
+
 app.post("/login", jsonParser, function (req, res) {
 
   if(!req.body) return res.sendStatus(400);
@@ -67,15 +79,15 @@ app.post("/login", jsonParser, function (req, res) {
   const userEarns = req.body.earns;
   const userBudget = req.body.budget;
   const userPublishBudget = req.body.publishBudget;
-  const userEat = req.body.eat;
-  const userNoEat = req.body.noEat;
+  const userFood = req.body.food;
+  const userRent = req.body.rent;
   const userClothes = req.body.clothes;
   const userHouseHoldChemicals = req.body.houseHoldChemicals;
   const userAnimals = req.body.animals;
 
   const user = {login: userLogin, password: userPassword, email: userEmail, firstName: userName, lastName: userLastName,
     age: userAge, gender: userGender, country: userCountry, city: userCity, currency: userCurrency, personOfFamily: userPersonOfFamily,
-    earns: userEarns, budget: userBudget, publishBudget: userPublishBudget, eat: userEat, noEat: userNoEat, clothes: userClothes,
+    earns: userEarns, budget: userBudget, publishBudget: userPublishBudget, food: userFood, rent: userRent, clothes: userClothes,
     houseHoldChemicals: userHouseHoldChemicals, animals: userAnimals
   };
 
