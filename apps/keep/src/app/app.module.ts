@@ -14,13 +14,15 @@ import { environment } from '../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
