@@ -4,10 +4,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserDto } from '../../../../../libs/data/src';
 import { HttpClient } from '@angular/common/http';
-import {filter, map, switchMap, take, tap} from 'rxjs/operators';
+import { filter, switchMap, take } from 'rxjs/operators';
 import { AddUserList } from '../+state/user/actions/user.actions';
-import { BackUrl } from '../../../../../libs/data/src/lib/backend-url/backend-url.enum';
 import {getUser, getUserList} from '../+state/user/selectors/user.selectors';
+import {BackUrl} from '../configs/backend-url.enum';
 
 @Injectable({
   providedIn: 'root'
