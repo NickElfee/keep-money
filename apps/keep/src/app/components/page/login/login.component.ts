@@ -1,22 +1,31 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { UserDto } from '../../../../../../../libs/data/src';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
+import {filter, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   @ViewChild('menuSocial') menuSocialElementRef: ElementRef;
 
   constructor(
     private builder: FormBuilder,
     private userService: UserService,
-  ) {}
+    private changeDetector: ChangeDetectorRef,
+  ) { }
 
   public menuSocialAction = false;
   public soundOn = true;
@@ -24,8 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public isSignUp = true;
   public isSignUpFull = false;
   public isSignIn = false;
-
-  private onDestroy$ = new Subject<boolean>();
+  public isLoadedIdentify: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   @HostListener('window:scroll', ['$event'])
   onScrollSocialMenu($event) {
@@ -52,11 +60,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userService.getUserList().subscribe(value => console.log(value));
   }
 
-  ngOnDestroy(): void {
-    this.onDestroy$.next(true);
-    this.onDestroy$.complete();
-  }
-
   public signUp(): void {
     this.isSignIn = false;
     this.isSignUp = true;
@@ -73,9 +76,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   }
 
-  public onClickSignUpSubmit() {
+  public onClickSignUpSubmit(userData: UserDto) {
+    const userEmail = userData.email;
+    const userLogin = userData.login;
     this.isSignUp = !this.isSignUp;
     this.isSignUpFull = !this.isSignUpFull;
+    this.userService.identifyUser(userEmail, userLogin).subscribe(value => {
+      console.log(value);
+      if (!value.length) {
+        console.log('new User');
+      } else {
+        console.log('old User');
+      }
+    });
   }
 
   public mute(elem): void {
@@ -85,15 +98,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private scrollEvent(): any {
 
-  }
-
-  public onClickSingFormFull(userForm: UserDto): void {
-    const userData = {...this.signUpForm.value, ...userForm};
-    this.userService.setUser(userData)
-      .pipe(
-        takeUntil(this.onDestroy$),
-      )
-      .subscribe();
   }
 
 }

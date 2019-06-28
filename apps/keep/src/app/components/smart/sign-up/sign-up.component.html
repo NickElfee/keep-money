@@ -1,173 +1,176 @@
-<div class="form-group">
-  <h1 class="h3 m-1 font-weight-normal text-center">All fields are required</h1>
-  <form
-    [formGroup]="signUpFormFull"
-    class="form-signup"
-  #signUpForm>
-    <label for="inputFirstName" class="sr-only">First Name</label>
-    <input
-      placeholder="First Name"
-      formControlName="firstName"
-      type="string"
-      id="inputFirstName"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      autofocus=""
-      tooltip="Type your first name, this input is required"
-      placement="left"
-    />
-    <label for="inputLastName" class="sr-only">Last Name</label>
-    <input
-      placeholder="Last Name"
-      formControlName="lastName"
-      type="string"
-      id="inputLastName"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type your last name, this input is required"
-      placement="left"
-    />
-    <label for="inputAge" class="sr-only">Age</label>
-    <input
-      placeholder="Age"
-      formControlName="age"
-      type="number"
-      id="inputAge"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how old are you, this input is required"
-      placement="left"
-    />
-    <label for="inputGender" class="sr-only">Gender</label>
-    <input
-      placeholder="Gender"
-      formControlName="gender"
-      type="string"
-      id="inputGender"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type your gender, this input is required"
-      placement="left"
-    />
-    <label for="inputCountry" class="sr-only">Country</label>
-    <input
-      placeholder="Country"
-      formControlName="country"
-      type="string"
-      id="inputCountry"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type where do you live, this input is required"
-      placement="left"
-    />
-    <label for="inputCity" class="sr-only">City</label>
-    <input
-      placeholder="City"
-      formControlName="city"
-      type="string"
-      id="inputCity"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type where city do you live , this input is required"
-      placement="left"
-    />
-    <label for="inputCurrency" class="sr-only">Currency</label>
-    <input
-      placeholder="Currency"
-      formControlName="currency"
-      type="string"
-      id="inputCurrency"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type what currency is in your country, this input is required"
-      placement="left"
-    />
-    <label for="inputPersonOfFamily" class="sr-only">Person of family</label>
-    <input
-      placeholder="Person of family"
-      formControlName="personOfFamily"
-      type="number"
-      id="inputPersonOfFamily"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how many people does have your family, this input is required"
-      placement="left"
-    />
-    <label for="inputEarns" class="sr-only">Earns</label>
-    <input
-      placeholder="Earns"
-      formControlName="earns"
-      type="number"
-      id="inputEarns"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money do you earn for a month, this input is required"
-      placement="left"
-    />
-    <label for="inputBudget" class="sr-only">Budget</label>
-    <input
-      placeholder="Budget"
-      formControlName="budget"
-      type="number"
-      id="inputBudget"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money do you have as a budget for a month, this input is required"
-      placement="left"
-    />
-    <label for="inputPublishBudget" class="sr-only">Publish budget</label>
-    <input
-      placeholder="Publish budget"
-      formControlName="publishBudget"
-      type="number"
-      id="inputPublishBudget"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money does your family have for a month, this input is required"
-      placement="left"
-    />
-    <label for="inputFood" class="sr-only">Food</label>
-    <input
-      placeholder="Food"
-      formControlName="food"
-      type="number"
-      id="inputFood"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money do you spend to food, this input is required"
-      placement="left"
-    />
-    <label for="inputRent" class="sr-only">Rent</label>
-    <input
-      placeholder="Rent"
-      formControlName="rent"
-      type="number"
-      id="inputRent"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money do you pay for an apartment, this input is required"
-      placement="left"
-    />
-    <label for="inputClothes" class="sr-only">Clothes</label>
-    <input
-      placeholder="Clothes"
-      formControlName="clothes"
-      type="number"
-      id="inputClothes"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money do you spend on clothes per a month, this input is required"
-      placement="left"
-    />
-    <label for="inputHouseHoldChemicals" class="sr-only">House hole chemicals</label>
-    <input
-      placeholder="House hole chemicals"
-      formControlName="houseHoldChemicals"
-      type="number"
-      id="inputHouseHoldChemicals"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type how much money do you spend on chemicals per a month, this input is required"
-      placement="left"
-    />
-    <label for="inputAnimals" class="sr-only">Animals</label>
-    <input
-      placeholder="Animals"
-      formControlName="animals"
-      type="number"
-      id="inputAnimals"
-      class="form-control m-2 col-md-offset-2 col-md-5"
-      tooltip="Type do you have some animals or an animal, this input is required"
-      placement="left"
-    />
-    <button (click)="signUpFull(signUpForm.value)" class="btn btn-lg btn-primary justify-content-center mt-2" type="submit" [disabled]="signUpFormFull.invalid">
-      Sign up
-    </button>
-  </form>
+<div class="form-signup-full">
+  <app-loader [isActive]="isLoadedSignUp | async">
+    <h1 class="h3 m-1 font-weight-normal text-center">All fields are required</h1>
+    <form
+      [formGroup]="signUpFormFull"
+      class="form-signup"
+      #signUpForm>
+      <label for="inputFirstName" class="sr-only">First Name</label>
+      <input
+        placeholder="First Name"
+        formControlName="firstName"
+        type="string"
+        id="inputFirstName"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        autofocus=""
+        tooltip="Type your first name, this input is required"
+        placement="left"
+      />
+      <label for="inputLastName" class="sr-only">Last Name</label>
+      <input
+        placeholder="Last Name"
+        formControlName="lastName"
+        type="string"
+        id="inputLastName"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type your last name, this input is required"
+        placement="left"
+      />
+      <label for="inputAge" class="sr-only">Age</label>
+      <input
+        placeholder="Age"
+        formControlName="age"
+        type="number"
+        id="inputAge"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how old are you, this input is required"
+        placement="left"
+      />
+      <label for="inputGender" class="sr-only">Gender</label>
+      <input
+        placeholder="Gender"
+        formControlName="gender"
+        type="string"
+        id="inputGender"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type your gender, this input is required"
+        placement="left"
+      />
+      <label for="inputCountry" class="sr-only">Country</label>
+      <input
+        placeholder="Country"
+        formControlName="country"
+        type="string"
+        id="inputCountry"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type where do you live, this input is required"
+        placement="left"
+      />
+      <label for="inputCity" class="sr-only">City</label>
+      <input
+        placeholder="City"
+        formControlName="city"
+        type="string"
+        id="inputCity"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type where city do you live , this input is required"
+        placement="left"
+      />
+      <label for="inputCurrency" class="sr-only">Currency</label>
+      <input
+        placeholder="Currency"
+        formControlName="currency"
+        type="string"
+        id="inputCurrency"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type what currency is in your country, this input is required"
+        placement="left"
+      />
+      <label for="inputPersonOfFamily" class="sr-only">Person of family</label>
+      <input
+        placeholder="Person of family"
+        formControlName="personOfFamily"
+        type="number"
+        id="inputPersonOfFamily"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how many people does have your family, this input is required"
+        placement="left"
+      />
+      <label for="inputEarns" class="sr-only">Earns</label>
+      <input
+        placeholder="Earns"
+        formControlName="earns"
+        type="number"
+        id="inputEarns"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money do you earn for a month, this input is required"
+        placement="left"
+      />
+      <label for="inputBudget" class="sr-only">Budget</label>
+      <input
+        placeholder="Budget"
+        formControlName="budget"
+        type="number"
+        id="inputBudget"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money do you have as a budget for a month, this input is required"
+        placement="left"
+      />
+      <label for="inputPublishBudget" class="sr-only">Publish budget</label>
+      <input
+        placeholder="Publish budget"
+        formControlName="publishBudget"
+        type="number"
+        id="inputPublishBudget"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money does your family have for a month, this input is required"
+        placement="left"
+      />
+      <label for="inputFood" class="sr-only">Food</label>
+      <input
+        placeholder="Food"
+        formControlName="food"
+        type="number"
+        id="inputFood"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money do you spend to food, this input is required"
+        placement="left"
+      />
+      <label for="inputRent" class="sr-only">Rent</label>
+      <input
+        placeholder="Rent"
+        formControlName="rent"
+        type="number"
+        id="inputRent"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money do you pay for an apartment, this input is required"
+        placement="left"
+      />
+      <label for="inputClothes" class="sr-only">Clothes</label>
+      <input
+        placeholder="Clothes"
+        formControlName="clothes"
+        type="number"
+        id="inputClothes"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money do you spend on clothes per a month, this input is required"
+        placement="left"
+      />
+      <label for="inputHouseHoldChemicals" class="sr-only">House hole chemicals</label>
+      <input
+        placeholder="House hole chemicals"
+        formControlName="houseHoldChemicals"
+        type="number"
+        id="inputHouseHoldChemicals"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type how much money do you spend on chemicals per a month, this input is required"
+        placement="left"
+      />
+      <label for="inputAnimals" class="sr-only">Animals</label>
+      <input
+        placeholder="Animals"
+        formControlName="animals"
+        type="number"
+        id="inputAnimals"
+        class="form-control m-2 col-md-offset-2 col-md-5"
+        tooltip="Type do you have some animals or an animal, this input is required"
+        placement="left"
+      />
+      <button (click)="singUpFormFull()" class="btn btn-lg btn-primary justify-content-center mt-2" type="submit" [disabled]="signUpFormFull.invalid">
+        Sign up
+      </button>
+    </form>
+  </app-loader>
+
 </div>
 
