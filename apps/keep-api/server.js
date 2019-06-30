@@ -45,6 +45,7 @@ app.get("/keep-money/:userPassword/login/:userLogin", function(req, res){
 
   collection.find({ login: userLogin, password: userPassword }).toArray(function(err, user){
     if(err) return console.log(err);
+
     res.send(user)
   })
 });

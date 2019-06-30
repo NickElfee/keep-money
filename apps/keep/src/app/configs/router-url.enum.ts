@@ -1,3 +1,4 @@
 export enum RouterUrl {
-  LOGIN = 'login'
+  LOGIN = 'login',
+  USER = 'user',
 }

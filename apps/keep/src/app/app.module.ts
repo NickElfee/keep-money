@@ -15,6 +15,9 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { UserPageComponent } from './components/page/user-page/user-page.component';
+import { UserIdPageComponent } from './components/smart/user-id-page/user-id-page.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
     SignUpComponent,
     SignInComponent,
     LoaderComponent,
+    UserPageComponent,
+    UserIdPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
       },
     ),
     StoreDevtoolsModule.instrument(),
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

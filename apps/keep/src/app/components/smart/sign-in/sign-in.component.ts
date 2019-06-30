@@ -2,6 +2,11 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../services/user.service';
 import {BehaviorSubject} from 'rxjs';
+import {delay, filter, map, take, tap} from 'rxjs/operators';
+import {UserDto} from '../../../../../../../libs/data/src';
+import {ActivatedRoute, Router} from '@angular/router';
+import {RouterUrl} from '../../../configs/router-url.enum';
+import {AuthService} from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +19,9 @@ export class SignInComponent implements OnInit {
   public signInForm: FormGroup;
   constructor(
     private builder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -39,8 +46,16 @@ export class SignInComponent implements OnInit {
   public onClickGetUser(): void {
     const userLogin = this.signInForm.value.userLogin;
     const userPassword = this.signInForm.value.userPassword;
-    this.userService.getUser(userLogin, userPassword).subscribe(value => console.log(value));
-    this.isLoadedUser.next(true);
+    this.authService.singIn$(userLogin, userPassword)
+      .pipe(
+
+      )
+        .subscribe(
+          (userDto: UserDto[]) => {
+            this.router.navigate([`/${RouterUrl.USER}/${userDto[0]._id}`], {relativeTo: this.activatedRoute});
+          });
+
+
   }
 
 }
