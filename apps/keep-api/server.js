@@ -55,7 +55,6 @@ app.get("/keep-money/identify/:login/:email", function(req, res){
   const userEmail = req.params.email;
 
   collection.find({ login: userLogin, email: userEmail }).toArray(function(err, user) {
-    console.log(user);
     if(err) return console.log(err);
     res.send(user)
   })
