@@ -9,10 +9,10 @@ export const getUserList = createSelector(selectState, selectAll);
 
 export const getUser = (login: string, password: string) =>
   createSelector(getUserList, (userList: UserDto[]) => userList.filter((user: UserDto) =>
-    ((user.login === login) && (user.password === password)) ? user : false
+    ((user.login === login) && (user.password === password)) ? user : undefined
   ));
 
 export const getUserIdentifyForm = (email: string, login: string) =>
   createSelector(getUserList, (userList: UserDto[]) => userList.filter((user: UserDto) =>
-    ((user.email === email) || (user.login === login)) ? user : false
+    ((user.email === email) && (user.login === login)) ? user : undefined
   ));

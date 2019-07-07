@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
@@ -10,7 +10,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from '../../../services/user.service';
 import { UserDto } from '../../../../../../../libs/data/src';
 import {BehaviorSubject} from 'rxjs';
-import {filter, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +23,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     private userService: UserService,
-    private changeDetector: ChangeDetectorRef,
   ) { }
 
   public menuSocialAction = false;
