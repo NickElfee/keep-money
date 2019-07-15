@@ -1,0 +1,8 @@
+<nav class="navbar navbar-light bg-dark user-id-page">
+  <div class="name-user">
+    <p *ngFor="let item of userList | async" class="text-white">{{item.firstName}}</p>
+  </div>
+  <div class="btnLogout">
+    <button (click)="logout()" type="button" class="btn btn-primary m-1">Logout</button>
+  </div>
+</nav>

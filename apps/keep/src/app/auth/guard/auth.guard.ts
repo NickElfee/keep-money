@@ -14,7 +14,8 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   public canActivate(): any {
-    if (!this.authService.verify$()) {
+    const userVerify = JSON.parse(localStorage.getItem('token'));
+    if (!userVerify) {
       this.router.navigate([`/${RouterUrl.LOGIN}`]);
       return of(false);
     }

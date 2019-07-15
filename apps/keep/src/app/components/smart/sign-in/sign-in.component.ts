@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {delay, filter, map, take, takeUntil, tap} from 'rxjs/operators';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { delay, filter, map, take, takeUntil, tap } from 'rxjs/operators';
 import { UserDto } from '../../../../../../../libs/data/src';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { RouterUrl } from '../../../configs/router-url.enum';
 import { AuthService } from '../../../auth/services/auth.service';
 
@@ -22,7 +22,6 @@ export class SignInComponent implements OnInit, OnDestroy {
     private builder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
