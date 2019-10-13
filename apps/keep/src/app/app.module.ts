@@ -18,7 +18,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { UserPageComponent } from './components/page/user-page/user-page.component';
 import { HomeComponent } from './components/page/home/home.component';
 import { AuthModule } from './auth/auth.module';
-import { UserIdPageComponent } from './components/smart/user-id-page/user-id-page.component';
+import { HeaderComponent } from './components/smart/header/header.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { UserIdPageComponent } from './components/smart/user-id-page/user-id-pag
     SignInComponent,
     LoaderComponent,
     UserPageComponent,
-    UserIdPageComponent,
+    HeaderComponent,
     HomeComponent,
   ],
   imports: [

@@ -3,9 +3,9 @@ import { UserDto } from '../../../../../../../libs/data/src';
 
 
 export enum UserActionTypes {
-  ADD_USER_LIST      = '[User] Add User list',
-  REMOVE_USER        = '[User] Remove  User',
-  UPDATE_USER        = '[User] Update User',
+  ADD_USER_LIST = '[User] Add User list',
+  REMOVE_USER   = '[User] Remove  User',
+  UPDATE_USER   = '[User] Update User',
 }
 
 export class AddUserList implements Action {
