@@ -6,7 +6,7 @@ import { UserDto } from '../../../../../libs/data/src';
 import { HttpClient } from '@angular/common/http';
 import { filter, map, switchMap, take } from 'rxjs/operators';
 import { AddUserList } from '../+state/user/actions/user.actions';
-import { getUserIdentifyForm, getUserList } from '../+state/user/selectors/user.selectors';
+import { getCurrentUser, getUserIdentifyForm, getUserList } from '../+state/user/selectors/user.selectors';
 import { BackUrl } from '../configs/backend-url.enum';
 
 @Injectable({
@@ -47,18 +47,12 @@ export class UserService {
     return checkUserIdentify$;
   }
 
-  public setUser(user: UserDto): Observable<any> {
-    return this.http.post<any>(`${BackUrl.api}/login`, user);
+  public setUser(user: UserDto): Observable<UserDto> {
+    return this.http.post<UserDto>(`${BackUrl.api}/login`, user);
   }
 
   public getCurrentUserById(): Observable<UserDto[]> {
     const currentUserId = JSON.parse(localStorage.getItem('token'));
-    return this.getUserList()
-      .pipe(
-        map((userList: UserDto[]) => userList
-          .filter(user => user._id === currentUserId),
-      )
-    );
+    return this.store$.select(getCurrentUser(currentUserId));
   }
-
 }

@@ -8,13 +8,13 @@ import { AuthDataService } from '../../../auth/services/auth-data.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'app-user-id-page',
-  templateUrl: './user-id-page.component.html',
-  styleUrls: ['./user-id-page.component.sass'],
+  selector: 'app-header-component',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserIdPageComponent implements OnInit {
-  public userList: Observable<UserDto[]>;
+export class HeaderComponent implements OnInit {
+  public userList$: Observable<UserDto[]>;
   constructor(
     private authService: AuthService,
     private route: Router,
@@ -23,7 +23,7 @@ export class UserIdPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userList = this.getCurrentUserById();
+    this.userList$ = this.getCurrentUserById();
   }
 
   public logout() {

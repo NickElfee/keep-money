@@ -18,6 +18,7 @@ export class UserDto extends Identifiable {
   eat: number;
   rent: number;
   clothes: number;
-  householdChemicals: number;
+  noEat: string;
+  houseHoldChemicals: number;
   animals: number;
 }
