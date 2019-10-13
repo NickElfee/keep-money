@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
@@ -9,8 +9,7 @@ import {
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { UserDto } from '../../../../../../../libs/data/src';
-import {BehaviorSubject} from 'rxjs';
-import {filter, map, tap} from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +23,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     private userService: UserService,
-    private changeDetector: ChangeDetectorRef,
   ) { }
 
   public menuSocialAction = false;
@@ -41,8 +39,6 @@ export class LoginComponent implements OnInit {
       this.menuSocialAction = true;
     }
   }
-
-
 
   ngOnInit(): void {
     this.signUpForm = this.builder.group({
@@ -94,10 +90,6 @@ export class LoginComponent implements OnInit {
   public mute(elem): void {
     (elem.muted) ? elem.muted = false : elem.muted = true;
     this.soundOn = !this.soundOn;
-  }
-
-  private scrollEvent(): any {
-
   }
 
 }

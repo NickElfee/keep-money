@@ -1,7 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../services/user.service';
-import {BehaviorSubject} from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { delay, filter, map, take, takeUntil, tap } from 'rxjs/operators';
+import { UserDto } from '../../../../../../../libs/data/src';
+import { Router } from '@angular/router';
+import { RouterUrl } from '../../../configs/router-url.enum';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,12 +13,15 @@ import {BehaviorSubject} from 'rxjs';
   styleUrls: ['./sign-in.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnDestroy {
   public isLoadedUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public signInForm: FormGroup;
+
+  private onDestroy$ = new Subject<boolean>();
   constructor(
     private builder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -28,6 +35,11 @@ export class SignInComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.onDestroy$.next(true);
+    this.onDestroy$.complete();
+  }
+
   public signIn(): void {
 
   }
@@ -39,8 +51,19 @@ export class SignInComponent implements OnInit {
   public onClickGetUser(): void {
     const userLogin = this.signInForm.value.userLogin;
     const userPassword = this.signInForm.value.userPassword;
-    this.userService.getUser(userLogin, userPassword).subscribe(value => console.log(value));
-    this.isLoadedUser.next(true);
+    this.authService.singIn$(userLogin, userPassword)
+      .pipe(
+        tap(() => this.isLoadedUser.next(true)),
+        take(1),
+        filter((userList: UserDto[]) => !!userList.length),
+        map((userList: UserDto[]) => userList[0]._id),
+        delay(2000),
+        tap(() => this.isLoadedUser.next(false)),
+        takeUntil(this.onDestroy$),
+      )
+        .subscribe(
+          (userId: string) => this.router.navigate([`/${RouterUrl.USER}/${userId}`])
+        );
   }
 
 }
